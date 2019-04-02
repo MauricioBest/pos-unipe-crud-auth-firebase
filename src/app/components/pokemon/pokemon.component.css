@@ -1,0 +1,38 @@
+.fa-remove{
+    margin-right: 10px; 
+    color:crimson;
+}
+
+.secondary-content {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.input-field label {
+    color: #006666;
+}
+
+.input-field input[type=text]:focus + label {
+    color: #006666;
+}
+
+.input-field input[type=text]:focus {
+    border-bottom: 1px solid #006666;
+    box-shadow: 0 1px 0 0 #006666;
+}
+  
+.input-field .prefix {
+    color: #009999;
+}
+
+.input-field .prefix.active {
+    color: #006666;
+}
+
+.deep-purple.darken-2{
+    background-color: #006666 !important;
+}

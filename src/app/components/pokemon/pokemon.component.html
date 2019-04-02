@@ -1,0 +1,49 @@
+<div class="card" style="margin-top: 16px;">
+    <div class="card-content">
+        <span class="card-nome">Novo pokemon</span>
+        <form (ngSubmit)="addPokemon()" class="col s6">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input type="text" [(ngModel)]="pokemon.nome" name="nome" />
+                    <label for="nome">Nome</label>
+                </div>
+                <div class="input-field col s6">
+                    <input type="text" [(ngModel)]="pokemon.tipo" name="tipo" />
+                    <label for="tipo">Tipo</label>
+                </div>
+                <input type="submit" value="Salvar" class="btn deep-purple darken-2" />
+            </div>
+        </form>
+    </div>
+</div>
+<div *ngIf="pokemons?.length > 0;else noPokemons">
+    <ul *ngFor="let pokemon of pokemons" class="collection">
+        <li class="collection-pokemon">
+            <strong>{{pokemon.nome}}: </strong>
+            {{pokemon.tipo}}
+            <button type="button" class="secondary-content">
+                <i (click)="deletePokemon($event, pokemon)" class="fa fa-trash" style="color: #d32f2f; margin-right: 8px;"></i>
+                <i (click)="editPokemon($event, pokemon)" class="fa fa-pencil" style="color: #006666;"></i>
+            </button>
+            <div *ngIf="editState && pokemonToEdit.id == pokemon.id">
+                <form (ngSubmit)="updatePokemon(pokemon)">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" placeholder="Add nome" [(ngModel)]="pokemon.nome" name="nome"/>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" placeholder="Add tipo" [(ngModel)]="pokemon.tipo" name="tipo"/>
+                        </div>
+                        <input type="submit" value="Update" class="btn orange" />
+                        <button (click)="deletePokemon($event, pokemon)" class="btn red">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<ng-template #noPokemons>
+    <hr/>
+    <h5>Não há pokemons na lista</h5>
+</ng-template>
